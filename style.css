@@ -1,0 +1,205 @@
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* Intro Screen */
+#intro {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.intro-content {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 40px;
+    border-radius: 20px;
+    text-align: center;
+    max-width: 500px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.intro-content h1 {
+    font-size: 3em;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.game-description {
+    margin-bottom: 30px;
+    font-size: 1.2em;
+    line-height: 1.6;
+    color: #555;
+    text-align: left;
+}
+
+.game-description p {
+    margin-bottom: 10px;
+}
+
+/* Game Container */
+#gameContainer {
+    width: 800px;
+    height: 600px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    position: relative;
+    overflow: hidden;
+}
+
+/* UI Elements */
+#ui {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px;
+    background: rgba(0, 0, 0, 0.3);
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+#gameCanvas {
+    width: 100%;
+    height: 70%;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Game Elements */
+.falling-flag {
+    position: absolute;
+}
+
+.falling-flag img {
+    border: 2px solid white;
+    border-radius: 5px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+    width: 80px;
+    height: 60px;
+}
+
+/* Answer Buttons */
+#answers {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+    padding: 15px;
+    height: 30%;
+    align-items: center;
+}
+
+.answer-btn {
+    flex: 1 1 calc(25% - 20px);
+    min-width: 120px;
+    max-width: 200px;
+    padding: 10px 8px;
+    background: rgba(255, 255, 255, 0.2);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 25px;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    white-space: normal;
+    word-wrap: break-word;
+    height: auto;
+    min-height: 50px;
+    line-height: 1.3;
+}
+
+.answer-btn:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: translateY(-2px);
+}
+
+.answer-btn.correct {
+    background: #4CAF50;
+    border-color: #45a049;
+}
+
+.answer-btn.wrong {
+    background: #f44336;
+    border-color: #da190b;
+}
+
+/* Fallback for very long names */
+.answer-btn span {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+/* Game Over Screen */
+#gameOver {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(0, 0, 0, 0.9);
+    padding: 40px;
+    border-radius: 15px;
+    text-align: center;
+    color: white;
+    z-index: 100;
+}
+
+#gameOver h2 {
+    margin-bottom: 20px;
+    font-size: 32px;
+}
+
+#gameOver p {
+    margin-bottom: 20px;
+    font-size: 20px;
+}
+
+/* Buttons */
+#startButton, #restartButton {
+    padding: 15px 40px;
+    background: #667eea;
+    border: none;
+    border-radius: 25px;
+    color: white;
+    font-size: 1.2em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#startButton:hover, #restartButton:hover {
+    background: #764ba2;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+#restartButton {
+    padding: 12px 30px;
+    font-size: 18px;
+}

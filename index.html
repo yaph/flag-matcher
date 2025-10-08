@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flag Matcher</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <!-- Intro Screen -->
+    <div id="intro">
+        <div class="intro-content">
+            <h1>🌍 Flag Matcher</h1>
+            <div class="game-description">
+                <p>Flags will fall from the top of the screen.</p>
+                <p>Click the correct country name before the flag reaches the bottom!</p>
+                <p>You have 3 lives - use them wisely!</p>
+            </div>
+            <button id="startButton">Start Game</button>
+        </div>
+    </div>
+
+    <!-- Game Screen -->
+    <div id="gameContainer" class="hidden">
+        <div id="ui">
+            <div id="score">Score: <span id="scoreValue">0</span></div>
+            <div id="lives">Lives: <span id="livesValue">3</span></div>
+        </div>
+        <div id="gameCanvas"></div>
+        <div id="answers">
+            <!-- Answer buttons will be generated here -->
+        </div>
+        <div id="gameOver" class="hidden">
+            <h2>Game Over!</h2>
+            <p>Final Score: <span id="finalScore">0</span></p>
+            <button id="restartButton">Play Again</button>
+        </div>
+    </div>
+    <script src="/game.js"></script>
+</body>
+</html>
