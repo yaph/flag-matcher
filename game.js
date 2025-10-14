@@ -41,29 +41,11 @@ class FlagMatcher {
 
     async loadCountryData() {
         try {
-            const response = await fetch('/data/country.json');
+            const response = await fetch('/data/countries.json');
             if (!response.ok) {
                 throw new Error(`Failed to load country data: ${response.status}`);
             }
-
-            const allCountries = await response.json();
-
-            // Filter to only include ISO countries and exclude special territories/organizations
-            const playableCountries = allCountries.filter(country =>
-                country.iso &&
-                country.code.length === 2 && // Only 2-letter country codes
-                !country.code.includes('-') && // Exclude regional flags like gb-eng, gb-sct, etc.
-                country.name !== 'Unknown' &&
-                !country.name.includes('Association') &&
-                !country.name.includes('Community') &&
-                !country.name.includes('League') &&
-                !country.name.includes('Nations') &&
-                country.continent // Must have a continent
-            );
-
-            console.log(`Loaded ${playableCountries.length} countries from JSON file`);
-            return playableCountries;
-
+            return await response.json();
         } catch (error) {
             console.error('Error loading country data:', error);
             return [];
@@ -116,7 +98,7 @@ class FlagMatcher {
 
         // Gradual difficulty increase
         this.baseSpeed = 1 + (this.score * 0.005);
-        this.spawnRate = Math.max(1200, 2000 - (this.score * 15)); // More reasonable progression
+        this.spawnRate = Math.max(1200, 2000 - (this.score * 15));
 
         this.animationId = requestAnimationFrame(() => this.gameLoop());
     }
@@ -235,7 +217,7 @@ class FlagMatcher {
                 }
             });
         } else {
-            // Only highlight the wrong answer in red - DO NOT reveal correct answer
+            // Only highlight the wrong answer in red
             buttons.forEach(button => {
                 if (button.textContent === selectedCountry.name) {
                     button.classList.add('wrong');
