@@ -9,5 +9,7 @@ url = 'https://raw.githubusercontent.com/lipis/flag-icons/refs/heads/main/countr
 with urllib.request.urlopen(url) as response:
     source_data = json.load(response)
 
-countries = [item for item in source_data if item.get('iso') is True and item.get('continent')]
+countries = [{'code': c['code'], 'name': c['name']}
+     for c in source_data if c.get('iso') is True and c.get('continent')]
+
 Path('data/countries.json').write_text(json.dumps(countries))
