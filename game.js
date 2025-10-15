@@ -2,18 +2,16 @@ class FlagMatcher {
     constructor() {
         this.countries = [];
         this.activeFlags = [];
-        this.score = 0;
-        this.lives = 3;
         this.currentAnswers = [];
         this.correctCountry = null;
-        this.baseSpeed = 1;
-        this.spawnRate = 3000;
         this.lastSpawnTime = 0;
-        this.isGameOver = false;
-        this.gameArea = document.getElementById('gameCanvas');
         this.animationId = null;
         this.currentFlagId = null;
         this.isPlaying = false;
+
+        this.intro = document.getElementById('intro');
+        this.gameArea = document.getElementById('gameCanvas');
+        this.gameContainer = document.getElementById('gameContainer');
 
         this.init();
     }
@@ -30,13 +28,13 @@ class FlagMatcher {
     }
 
     showIntro() {
-        document.getElementById('intro').classList.remove('hidden');
-        document.getElementById('gameContainer').classList.add('hidden');
+        this.intro.classList.remove('hidden');
+        this.gameContainer.classList.add('hidden');
     }
 
     hideIntro() {
-        document.getElementById('intro').classList.add('hidden');
-        document.getElementById('gameContainer').classList.remove('hidden');
+        this.intro.classList.add('hidden');
+        this.gameContainer.classList.remove('hidden');
     }
 
     async loadCountryData() {
@@ -64,7 +62,8 @@ class FlagMatcher {
         this.score = 0;
         this.lives = 3;
         this.baseSpeed = 1;
-        this.spawnRate = 2000; // Faster start
+        this.spawnRate = 2000;
+        this.spawnRateMax = 3000;
         this.isGameOver = false;
         this.activeFlags = [];
         this.currentFlagId = null;
@@ -98,7 +97,7 @@ class FlagMatcher {
 
         // Gradual difficulty increase
         this.baseSpeed = 1 + (this.score * 0.005);
-        this.spawnRate = Math.max(1200, 2000 - (this.score * 15));
+        this.spawnRate = Math.max(1200, this.spawnRateMax - (this.score * 15));
 
         this.animationId = requestAnimationFrame(() => this.gameLoop());
     }
@@ -109,7 +108,7 @@ class FlagMatcher {
 
         const flagElement = document.createElement('div');
         flagElement.className = 'falling-flag';
-        flagElement.innerHTML = `<img src="https://flagicons.lipis.dev/flags/1x1/${randomCountry.code}.svg" alt="${randomCountry.name}">`;
+        flagElement.innerHTML = `<img src="https://raw.githubusercontent.com/lipis/flag-icons/refs/heads/main/flags/1x1/${randomCountry.code}.svg" alt="${randomCountry.name}">`;
 
         const leftPos = Math.random() * (this.gameArea.offsetWidth - 80);
         flagElement.style.left = leftPos + 'px';
