@@ -39,7 +39,7 @@ class FlagMatcher {
 
     async loadCountryData() {
         try {
-            const response = await fetch('/data/countries.json');
+            const response = await fetch('https://yaph.github.io/flag-matcher/data/countries.json');
             if (!response.ok) {
                 throw new Error(`Failed to load country data: ${response.status}`);
             }
