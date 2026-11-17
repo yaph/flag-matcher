@@ -1,6 +1,6 @@
 # Flag Matcher 🌍
 
-A fun and educational browser-based geography game where you match falling flags to their correct country names before they reach the bottom of the screen!
+A fun and educational browser-based geography game where you match falling flags to their correct country names before they reach the bottom of the screen.
 
 ## 🎮 How to Play
 
@@ -44,24 +44,6 @@ The code structure makes it easy to add:
 - Time attack mode
 - Continent-specific challenges
 - Different difficulty levels
-
-## 🌐 Browser Compatibility
-
-Works in modern browsers:
-
-- Chrome 60+
-- Firefox 55+
-- Safari 12+
-- Edge 79+
-
-## 🤝 Contributing
-
-Feel free to fork this project and submit pull requests for:
-
-- Bug fixes
-- New features
-- Improved styling
-- Additional game modes
 
 ## 📄 License
 
